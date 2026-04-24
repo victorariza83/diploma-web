@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clasif. oficial Generali Maraton Malaga 2025. Medio Maratón</title>
+  <title>Clasif. oficial Generali Maraton Malaga 2025. Medio Maratón — Sportmaniacs</title>
   <style>
     :root {
       --yellow: #f3c316;
@@ -542,10 +542,12 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
-        <div class="brand-box">M</div>
+        <div class="brand-box">S</div>
         <div>SPORTMANIACS</div>
       </div>
-      <div style="font-size:14px; color:#ddd;">Clasificaciones oficiales</div>
+      <div class="race-meta">14 dic 2025, Málaga</div>
+      <h1>Generali Maraton Malaga 2025</h1>
+      <p>Clasif. oficial Generali Maraton Malaga 2025. Medio Maratón</p>
     </div>
   </header>
 
@@ -560,9 +562,7 @@
   <nav class="tabs">
     <div class="container tabs-inner">
       <a class="tab" href="#">Inicio</a>
-      <a class="tab active" href="#">Clasificaciones</a>
-      <a class="tab" href="#">Generali Maraton Malaga 2025</a>
-      <a class="tab" href="#">Resultados</a>
+      <a class="tab active" href="#">Resultados</a>
       <a class="tab" href="#">Tu resultado</a>
       <a class="tab" href="#">Resumen</a>
       <a class="tab" href="#">Clasificación</a>
@@ -573,14 +573,14 @@
   </nav>
 
   <div class="container breadcrumbs">
-    Inicio / Clasificaciones / Generali Maraton Malaga 2025 / Medio Maratón
+    Inicio / Clasificaciones / Generali Maraton Malaga 2025 / Resultados / Medio Maratón
   </div>
 
   <main class="container content">
     <aside class="sidebar">
       <section class="card sidebar-section">
-        <h2 class="search-title">Rankings</h2>
-        <label class="label" for="searchInput">Busca por dorsal o por nombre de corredor</label>
+        <h2 class="search-title">Rankings de Generali Maraton Malaga 2025 Medio Maratón</h2>
+        <label class="label" for="searchInput">Busca por dorsal o por nombre de corredor.</label>
         <div class="input-wrap">
           <input id="searchInput" class="input" type="text" value="VICTOR MANUEL ARIZA MAYO" placeholder="Nombre o dorsal" />
           <button class="btn btn-primary" onclick="searchParticipant()">Buscar</button>
@@ -590,16 +590,17 @@
       </section>
 
       <section class="card sidebar-section">
-        <h2 class="search-title">Acciones</h2>
+        <h2 class="search-title">Herramientas</h2>
         <button class="btn btn-dark" style="width:100%; margin-bottom:10px;" onclick="window.print()">Imprimir</button>
-        <button class="btn btn-primary" style="width:100%;" onclick="scrollToDiploma()">Ver diploma</button>
+        <button class="btn btn-primary" style="width:100%; margin-bottom:10px;" onclick="scrollToDiploma()">Ver diploma</button>
+        <button class="btn" style="width:100%; background:#fff; border:1px solid var(--border);" onclick="copyLink()">Compartir</button>
       </section>
     </aside>
 
     <section class="main-panel">
       <article class="card">
         <div class="result-header">
-          <div class="participant-badge">✔ CONFIRMO QUE SOY ESTE PARTICIPANTE</div>
+          <div class="participant-badge">✔ CONFIRM I'M THIS ATHLETE</div>
           <h2 class="participant-main-name" id="mainName">VICTOR MANUEL ARIZA MAYO</h2>
           <div class="participant-club" id="mainClub">INDEPENDIENTE</div>
         </div>
@@ -608,7 +609,7 @@
           <div class="section-title">Results Gun Time</div>
           <div class="metrics-grid">
             <div class="metric">
-              <div class="metric-label">Gun Time Position</div>
+              <div class="metric-label">Official Results</div>
               <div class="metric-value" id="gunPos">—</div>
             </div>
             <div class="metric">
@@ -616,24 +617,38 @@
               <div class="metric-value" id="genderPos">—</div>
             </div>
             <div class="metric">
-              <div class="metric-label">Pos.</div>
-              <div class="metric-value" id="pos">—</div>
+              <div class="metric-label">Gun Time</div>
+              <div class="metric-value" id="officialMetric">2:58:33</div>
             </div>
           </div>
 
           <div class="section-title">Results Chip</div>
           <div class="metrics-grid">
             <div class="metric">
+              <div class="metric-label">Chip position</div>
+              <div class="metric-value" id="pos">—</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Gender Pos.</div>
+              <div class="metric-value" id="chipGenderPos">—</div>
+            </div>
+            <div class="metric">
               <div class="metric-label">Chip Time</div>
               <div class="metric-value" id="chipMetric">2:57:39</div>
             </div>
+          </div>
+          <div class="metrics-grid" style="border-top:0;">
             <div class="metric">
-              <div class="metric-label">Official Time</div>
-              <div class="metric-value" id="officialMetric">2:58:33</div>
+              <div class="metric-label">Pace</div>
+              <div class="metric-value" id="paceMetric">08m 25s / km</div>
             </div>
             <div class="metric">
               <div class="metric-label">Status</div>
               <div class="metric-value" id="statusMetric">Finisher</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Distance</div>
+              <div class="metric-value">21.097km</div>
             </div>
           </div>
 
@@ -643,14 +658,15 @@
               <div class="summary-item"><div class="k">Prueba</div><div class="v" id="raceField">Medio Maratón</div></div>
               <div class="summary-item"><div class="k">Dorsal</div><div class="v" id="bibField">6928ZY8D</div></div>
               <div class="summary-item"><div class="k">Categoría</div><div class="v" id="catField">Masculino</div></div>
-              <div class="summary-item"><div class="k">Ciudad</div><div class="v">Málaga</div></div>
+              <div class="summary-item"><div class="k">Estado</div><div class="v">Finisher</div></div>
             </div>
           </div>
 
           <div class="actions">
             <button class="action-btn primary" onclick="window.print()">Imprimir</button>
-            <button class="action-btn" onclick="scrollToDiploma()">Diploma</button>
+            <button class="action-btn" onclick="scrollToDiploma()">Tu resultado</button>
             <button class="action-btn" onclick="copyName()">Copiar nombre</button>
+            <button class="action-btn" onclick="copyLink()">Compartir</button>
           </div>
         </div>
       </article>
@@ -717,6 +733,7 @@
         bib: '6928ZY8D',
         officialTime: '2:58:33',
         chipTime: '2:57:39',
+        pace: '08m 25s / km',
         race: 'Medio Maratón',
         category: 'Masculino',
         status: 'Finisher',
@@ -758,6 +775,8 @@
       document.getElementById('gunPos').textContent = p.gunPos;
       document.getElementById('genderPos').textContent = p.genderPos;
       document.getElementById('pos').textContent = p.pos;
+      document.getElementById('chipGenderPos').textContent = p.genderPos;
+      document.getElementById('paceMetric').textContent = p.pace;
       document.getElementById('chipMetric').textContent = p.chipTime;
       document.getElementById('officialMetric').textContent = p.officialTime;
       document.getElementById('statusMetric').textContent = p.status;
@@ -791,6 +810,12 @@
     function copyName() {
       navigator.clipboard.writeText(currentParticipant.name).then(() => {
         alert('Nombre copiado');
+      });
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('Enlace copiado');
       });
     }
 
