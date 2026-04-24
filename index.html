@@ -592,8 +592,8 @@
       <section class="card sidebar-section">
         <h2 class="search-title">Herramientas</h2>
         <button class="btn btn-dark" style="width:100%; margin-bottom:10px;" onclick="window.print()">Imprimir</button>
-        <a class="btn btn-primary" style="width:100%; margin-bottom:10px; display:block; text-align:center;" href="https://victorariza83.github.io/diploma-web/diploma.png
-        <button class="btn" style="width:100%; background:#fff; border:1px solid var(--border);" onclick="copyLink()">Ver diploma</button>
+        <a class="btn btn-primary" style="width:100%; margin-bottom:10px; display:block; text-align:center;" href="https://victorariza83.github.io/diploma-web/diploma.png" target="_blank" rel="noopener noreferrer">Ver diploma</a>
+        <button class="btn" style="width:100%; background:#fff; border:1px solid var(--border);" onclick="copyLink()">Compartir</button>
       </section>
     </aside>
 
@@ -664,7 +664,7 @@
 
           <div class="actions">
             <button class="action-btn primary" onclick="window.print()">Imprimir</button>
-            <button class="action-btn" onclick="downloadDiploma()">Tu resultado</button>
+            <a class="action-btn" href="https://victorariza83.github.io/diploma-web/diploma.png" target="_blank" rel="noopener noreferrer">Tu resultado</a>
             <button class="action-btn" onclick="copyName()">Copiar nombre</button>
             <button class="action-btn" onclick="copyLink()">Compartir</button>
           </div>
@@ -803,31 +803,7 @@
       }
     }
 
-    function downloadDiploma() {
-  const url = 'https://victorariza83.github.io/diploma-web/diploma.png';
-
-  fetch(url)
-    .then(response => response.blob())
-    .then(blob => {
-      const blobUrl = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = 'diploma.png';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(blobUrl);
-    })
-    .catch(() => {
-      // fallback por si el navegador bloquea fetch
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'diploma.png';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-});
+    );
     }
 
     function copyName() {
