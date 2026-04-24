@@ -610,11 +610,11 @@
           <div class="metrics-grid">
             <div class="metric">
               <div class="metric-label">Official Results</div>
-              <div class="metric-value" id="gunPos">415</div>
+              <div class="metric-value" id="gunPos">—</div>
             </div>
             <div class="metric">
               <div class="metric-label">Gender Pos.</div>
-              <div class="metric-value" id="genderPos">380</div>
+              <div class="metric-value" id="genderPos">—</div>
             </div>
             <div class="metric">
               <div class="metric-label">Gun Time</div>
@@ -626,11 +626,11 @@
           <div class="metrics-grid">
             <div class="metric">
               <div class="metric-label">Chip position</div>
-              <div class="metric-value" id="pos">413</div>
+              <div class="metric-value" id="pos">—</div>
             </div>
             <div class="metric">
               <div class="metric-label">Gender Pos.</div>
-              <div class="metric-value" id="chipGenderPos">378</div>
+              <div class="metric-value" id="chipGenderPos">—</div>
             </div>
             <div class="metric">
               <div class="metric-label">Chip Time</div>
@@ -804,13 +804,30 @@
     }
 
     function downloadDiploma() {
-      const link = document.createElement('https://victorariza83.github.io/diploma-web');
-      link.href = 'diploma.png';
+  const url = 'https://victorariza83.github.io/diploma-web/diploma.png';
+
+  fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'diploma.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    })
+    .catch(() => {
+      // fallback por si el navegador bloquea fetch
+      const link = document.createElement('a');
+      link.href = url;
       link.download = 'diploma.png';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     });
+});
     }
 
     function copyName() {
