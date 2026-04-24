@@ -1,141 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clasif. oficial Generali Maraton Malaga 2025. Medio Maratón</title>
+  <style>
+    :root {
+      --yellow: #f3c316;
+      --yellow-dark: #dbad09;
+      --black: #171717;
+      --bg: #f4f4f4;
+      --card: #ffffff;
+      --muted: #777;
+      --border: #e6e6e6;
+      --soft: #fafafa;
+    }
 
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: #111;
+    }
 
+    a { color: inherit; text-decoration: none; }
 
+    .topbar {
+      background: #111;
+      color: #fff;
+      padding: 14px 0;
+      border-bottom: 4px solid var(--yellow);
+    }
 
-Listo. Ya tienes una versión 100% HTML estático en el canvas 👆
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-Cómo usarla en GitHub Pages (rápido)
-Descarga ese archivo como index.html
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-Crea un repositorio en GitHub
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
 
-Sube el index.html
+    .brand-box {
+      width: 42px;
+      height: 42px;
+      background: var(--yellow);
+      color: #111;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 900;
+      border-radius: 4px;
+    }
 
-Ve a Settings → Pages
+    .hero {
+      background: linear-gradient(180deg, #2b2b2b 0%, #1b1b1b 100%);
+      color: #fff;
+      padding: 28px 0 22px;
+    }
 
-Activa desde rama main
+    .race-meta {
+      color: rgba(255,255,255,0.75);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
 
-Entra a tu URL (https://tuusuario.github.io/repositorio)
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      line-height: 1.05;
+    }
 
-Qué incluye esta versión
-Buscador básico (filtra por el nombre)
+    .hero p {
+      margin: 10px 0 0;
+      color: rgba(255,255,255,0.82);
+      max-width: 760px;
+      font-size: 15px;
+    }
 
-Datos ya cargados de VICTOR MANUEL ARIZA MAYO
+    .tabs {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
 
-Diploma visual
+    .tabs-inner {
+      display: flex;
+      gap: 22px;
+      white-space: nowrap;
+    }
 
-Botón de imprimir / guardar en PDF
+    .tab {
+      padding: 16px 0;
+      color: #5c5c5c;
+      font-weight: 600;
+      border-bottom: 3px solid transparent;
+    }
 
-Sin React, sin build, funciona directamente
+    .tab.active {
+      color: #111;
+      border-bottom-color: var(--yellow);
+    }
 
-Si quieres el siguiente nivel puedo:
+    .breadcrumbs {
+      color: #808080;
+      font-size: 13px;
+      padding: 18px 0 12px;
+    }
 
-Hacer que cargue múltiples corredores desde JSON (como la web real)
+    .content {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 40px;
+    }
 
-Clonar aún más el diseño de Sportmaniacs (tipografía, colores exactos)
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
 
-Añadir descarga directa en PDF con botón
+    .sidebar-section {
+      padding: 18px;
+      margin-bottom: 18px;
+    }
 
-Solo dime 👍
+    .search-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 800;
+    }
 
+    .label {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
 
-para crear un proyecto react como lo creo desde github?
+    .input-wrap {
+      display: flex;
+      gap: 8px;
+    }
 
-Buena pregunta, porque aquí hay un matiz importante:
-👉 GitHub NO crea proyectos React por sí solo. GitHub solo aloja el código.
-El proyecto React lo creas en tu ordenador y luego lo subes a GitHub.
+    .input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #d8d8d8;
+      border-radius: 10px;
+      outline: none;
+      font-size: 14px;
+    }
 
-Te explico la forma correcta (la que usa todo el mundo ahora mismo 👇)
+    .input:focus { border-color: var(--yellow-dark); }
 
-🚀 OPCIÓN RECOMENDADA (Vite + React)
-1. Crear el proyecto en local
-Abre terminal y ejecuta:
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 12px 14px;
+      font-weight: 700;
+      font-size: 14px;
+    }
 
-npm create vite@latest mi-diploma -- --template react
-Luego:
+    .btn-primary {
+      background: var(--yellow);
+      color: #111;
+    }
 
-cd mi-diploma
-npm install
-npm run dev
-👉 Esto te abre la web en:
+    .btn-primary:hover { background: var(--yellow-dark); }
 
-http://localhost:5173
-2. Subirlo a GitHub
-Primero crea un repo vacío en GitHub (sin README).
+    .btn-dark {
+      background: #111;
+      color: #fff;
+    }
 
-Luego en tu proyecto:
+    .participant-item {
+      margin-top: 14px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 14px;
+      background: #fffef8;
+      cursor: pointer;
+    }
 
-git init
-git add .
-git commit -m "Proyecto inicial React"
-git branch -M main
-git remote add origin https://github.com/TU-USUARIO/mi-diploma.git
-git push -u origin main
-🌐 3. Publicarlo (GitHub Pages)
-React no funciona directo → hay que hacer build:
+    .participant-item.active {
+      border-color: var(--yellow);
+      box-shadow: 0 0 0 3px rgba(243,195,22,0.18);
+    }
 
-npm run build
-Esto crea una carpeta:
+    .participant-name {
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1.35;
+    }
 
-/dist
-Opción fácil (recomendada)
-Instala gh-pages:
+    .participant-sub {
+      margin-top: 6px;
+      color: #666;
+      font-size: 13px;
+    }
 
-npm install gh-pages --save-dev
-Edita package.json y añade:
+    .main-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
 
-"homepage": "https://TU-USUARIO.github.io/mi-diploma",
-"scripts": {
-  "deploy": "gh-pages -d dist"
-}
-Luego:
+    .result-header {
+      background: linear-gradient(135deg, #363636, #202020);
+      color: #fff;
+      padding: 22px;
+      border-radius: 14px 14px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
 
-npm run deploy
-👉 Ya tendrás tu web online
+    .result-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(243,195,22,0.28), transparent 28%);
+      pointer-events: none;
+    }
 
-🧠 Alternativa (sin terminal)
-Si no quieres instalar nada:
+    .participant-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
 
-Ve a 👉 https://vite.new/react
+    .participant-main-name {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--yellow);
+      max-width: 850px;
+    }
 
-Descarga el proyecto
+    .participant-club {
+      margin-top: 8px;
+      font-size: 19px;
+      font-weight: 700;
+    }
 
-Súbelo a GitHub
+    .result-body {
+      padding: 0 0 18px;
+      border-radius: 0 0 14px 14px;
+      overflow: hidden;
+    }
 
-⚠️ IMPORTANTE
-GitHub Pages sirve HTML estático
+    .section-title {
+      padding: 18px 22px 10px;
+      font-size: 20px;
+      font-weight: 800;
+    }
 
-React necesita build (dist)
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
 
-No subas solo src/ → no funcionará
+    .metric {
+      padding: 22px;
+      background: #fff;
+      border-right: 1px solid var(--border);
+    }
 
-💡 CONSEJO PARA TU CASO
-Como ya tienes:
+    .metric:last-child { border-right: 0; }
 
-versión React (canvas)
+    .metric-label {
+      color: #777;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
 
-versión HTML
+    .metric-value {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 900;
+      line-height: 1;
+    }
 
-👉 Para algo rápido → usa HTML
-👉 Para algo escalable → usa React + Vite
+    .summary-box {
+      padding: 18px 22px 0;
+    }
 
-Si quieres, en el siguiente paso te puedo:
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
 
-convertir tu proyecto actual en un repo listo para copiar/pegar
-
-o darte el package.json ya preparado para deploy automático
-
-Solo dime 👍
-
-
-me puedes generar una web en html pero replicando exactamente el formato de la web original
-
-Voy a inspeccionar la página original para copiar la estructura visual lo más fielmente posible y, si hay partes que el sitio no deja ver desde aquí, las recrearé a partir de lo visible.
-
-Voy a rehacerla en HTML estático con una estructura mucho más fiel a la original de Sportmaniacs: cabecera, migas, pestañas, panel de búsqueda, bloque “Tu resultado”, resumen, botones y estilo visual oscuro/amarillo.
-
-Diploma Static Html
-· html
     .summary-item {
       background: var(--soft);
       border: 1px solid var(--border);
@@ -234,5 +418,384 @@ Diploma Static Html
     }
 
     .diploma-name {
+      margin: 18px auto 0;
+      font-size: clamp(28px, 4.5vw, 56px);
+      font-weight: 900;
+      line-height: 1.04;
+      text-transform: uppercase;
+      max-width: 900px;
+    }
 
+    .diploma-desc {
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: #555;
+      line-height: 1.65;
+      font-size: 17px;
+    }
 
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .time-card {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .time-card .t-label {
+      color: #7a7a7a;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .time-card .t-value {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1;
+      font-weight: 900;
+      margin-top: 14px;
+    }
+
+    .time-card.real .t-value {
+      color: #1a7e43;
+    }
+
+    .foot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .foot-item {
+      background: rgba(255,255,255,0.72);
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .foot-item .k {
+      font-size: 12px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .foot-item .v {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .diploma-footer {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 2px solid rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .muted {
+      color: #666;
+    }
+
+    @media (max-width: 980px) {
+      .content,
+      .summary-grid,
+      .foot-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr; }
+      .metric { border-right: 0; border-bottom: 1px solid var(--border); }
+      .metric:last-child { border-bottom: 0; }
+      .time-grid { grid-template-columns: 1fr; }
+      .diploma-top,
+      .diploma-footer { flex-direction: column; align-items: stretch; }
+      .diploma-race { text-align: left; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .topbar, .tabs, .breadcrumbs, .sidebar, .actions { display: none !important; }
+      .container { width: 100%; }
+      .content { display: block; }
+      .card { border: 0; box-shadow: none; }
+      .result-header, .result-body > .section-title, .summary-box { display: none; }
+      .diploma {
+        margin-top: 0;
+        border-radius: 0;
+        min-height: 100vh;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-box">M</div>
+        <div>SPORTMANIACS</div>
+      </div>
+      <div style="font-size:14px; color:#ddd;">Clasificaciones oficiales</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="race-meta">14 dic 2025 · Málaga</div>
+      <h1>Generali Maraton Malaga 2025</h1>
+      <p>Clasificación oficial Medio Maratón. Busca por dorsal o por nombre de corredor.</p>
+    </div>
+  </section>
+
+  <nav class="tabs">
+    <div class="container tabs-inner">
+      <a class="tab" href="#">Inicio</a>
+      <a class="tab active" href="#">Clasificaciones</a>
+      <a class="tab" href="#">Generali Maraton Malaga 2025</a>
+      <a class="tab" href="#">Resultados</a>
+      <a class="tab" href="#">Tu resultado</a>
+      <a class="tab" href="#">Resumen</a>
+      <a class="tab" href="#">Clasificación</a>
+      <a class="tab" href="#">Clubs</a>
+      <a class="tab" href="#">Comparador</a>
+      <a class="tab" href="#">Fotos</a>
+    </div>
+  </nav>
+
+  <div class="container breadcrumbs">
+    Inicio / Clasificaciones / Generali Maraton Malaga 2025 / Medio Maratón
+  </div>
+
+  <main class="container content">
+    <aside class="sidebar">
+      <section class="card sidebar-section">
+        <h2 class="search-title">Rankings</h2>
+        <label class="label" for="searchInput">Busca por dorsal o por nombre de corredor</label>
+        <div class="input-wrap">
+          <input id="searchInput" class="input" type="text" value="VICTOR MANUEL ARIZA MAYO" placeholder="Nombre o dorsal" />
+          <button class="btn btn-primary" onclick="searchParticipant()">Buscar</button>
+        </div>
+
+        <div id="participantList"></div>
+      </section>
+
+      <section class="card sidebar-section">
+        <h2 class="search-title">Acciones</h2>
+        <button class="btn btn-dark" style="width:100%; margin-bottom:10px;" onclick="window.print()">Imprimir</button>
+        <button class="btn btn-primary" style="width:100%;" onclick="scrollToDiploma()">Ver diploma</button>
+      </section>
+    </aside>
+
+    <section class="main-panel">
+      <article class="card">
+        <div class="result-header">
+          <div class="participant-badge">✔ CONFIRMO QUE SOY ESTE PARTICIPANTE</div>
+          <h2 class="participant-main-name" id="mainName">VICTOR MANUEL ARIZA MAYO</h2>
+          <div class="participant-club" id="mainClub">INDEPENDIENTE</div>
+        </div>
+
+        <div class="result-body">
+          <div class="section-title">Results Gun Time</div>
+          <div class="metrics-grid">
+            <div class="metric">
+              <div class="metric-label">Gun Time Position</div>
+              <div class="metric-value" id="gunPos">—</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Gender Pos.</div>
+              <div class="metric-value" id="genderPos">—</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Pos.</div>
+              <div class="metric-value" id="pos">—</div>
+            </div>
+          </div>
+
+          <div class="section-title">Results Chip</div>
+          <div class="metrics-grid">
+            <div class="metric">
+              <div class="metric-label">Chip Time</div>
+              <div class="metric-value" id="chipMetric">2:57:39</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Official Time</div>
+              <div class="metric-value" id="officialMetric">2:58:33</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Status</div>
+              <div class="metric-value" id="statusMetric">Finisher</div>
+            </div>
+          </div>
+
+          <div class="summary-box">
+            <div class="section-title" style="padding:0;">Resumen</div>
+            <div class="summary-grid">
+              <div class="summary-item"><div class="k">Prueba</div><div class="v" id="raceField">Medio Maratón</div></div>
+              <div class="summary-item"><div class="k">Dorsal</div><div class="v" id="bibField">6928ZY8D</div></div>
+              <div class="summary-item"><div class="k">Categoría</div><div class="v" id="catField">Masculino</div></div>
+              <div class="summary-item"><div class="k">Ciudad</div><div class="v">Málaga</div></div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="action-btn primary" onclick="window.print()">Imprimir</button>
+            <button class="action-btn" onclick="scrollToDiploma()">Diploma</button>
+            <button class="action-btn" onclick="copyName()">Copiar nombre</button>
+          </div>
+        </div>
+      </article>
+
+      <section id="diploma" class="diploma">
+        <div class="diploma-top">
+          <div>
+            <div class="diploma-sub">Diploma oficial</div>
+            <h3 class="diploma-title">Generali Maraton Malaga 2025</h3>
+            <div class="muted" style="margin-top:10px;">Málaga · 14 de diciembre de 2025</div>
+          </div>
+          <div class="diploma-race">
+            Medio Maratón<br>
+            <span class="muted" style="font-size:13px; font-weight:600;">21.097 km</span>
+          </div>
+        </div>
+
+        <div class="diploma-center">
+          <div class="small">Se certifica que</div>
+          <div class="diploma-name" id="diplomaName">VICTOR MANUEL ARIZA MAYO</div>
+          <div class="diploma-desc">
+            ha finalizado la prueba <strong>Medio Maratón</strong> del <strong>Generali Maraton Malaga 2025</strong>,
+            registrando las siguientes marcas en la clasificación oficial.
+          </div>
+        </div>
+
+        <div class="time-grid">
+          <div class="time-card">
+            <div class="t-label">Tiempo oficial</div>
+            <div class="t-value" id="diplomaOfficial">2:58:33</div>
+          </div>
+          <div class="time-card real">
+            <div class="t-label">Tiempo real</div>
+            <div class="t-value" id="diplomaChip">2:57:39</div>
+          </div>
+        </div>
+
+        <div class="foot-grid">
+          <div class="foot-item"><div class="k">Dorsal</div><div class="v" id="diplomaBib">6928ZY8D</div></div>
+          <div class="foot-item"><div class="k">Club</div><div class="v" id="diplomaClub">INDEPENDIENTE</div></div>
+          <div class="foot-item"><div class="k">Estado</div><div class="v">Finisher</div></div>
+          <div class="foot-item"><div class="k">Categoría</div><div class="v">Masculino</div></div>
+        </div>
+
+        <div class="diploma-footer">
+          <div>
+            <div style="font-weight:800;">Certificado digital de participación</div>
+            <div class="muted" style="margin-top:6px;">Documento generado desde la búsqueda del participante en la clasificación.</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="muted" style="font-size:12px; text-transform:uppercase; letter-spacing:0.08em;">Marca destacada</div>
+            <div style="font-size:34px; font-weight:900; color:#1a7e43;" id="highlightTime">2:57:39</div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const participants = [
+      {
+        name: 'VICTOR MANUEL ARIZA MAYO',
+        club: 'INDEPENDIENTE',
+        bib: '6928ZY8D',
+        officialTime: '2:58:33',
+        chipTime: '2:57:39',
+        race: 'Medio Maratón',
+        category: 'Masculino',
+        status: 'Finisher',
+        gunPos: '—',
+        genderPos: '—',
+        pos: '—'
+      }
+    ];
+
+    let currentParticipant = participants[0];
+
+    function renderParticipantList(filtered) {
+      const list = document.getElementById('participantList');
+      if (!filtered.length) {
+        list.innerHTML = '<div class="participant-item"><div class="participant-name">No hay resultados</div><div class="participant-sub">Prueba con otro nombre o dorsal.</div></div>';
+        return;
+      }
+
+      list.innerHTML = filtered.map((p, index) => `
+        <div class="participant-item ${index === 0 ? 'active' : ''}" onclick="selectParticipant('${encodeURIComponent(p.name)}')">
+          <div class="participant-name">${p.name}</div>
+          <div class="participant-sub">${p.bib} · Oficial ${p.officialTime} · Real ${p.chipTime}</div>
+        </div>
+      `).join('');
+    }
+
+    function selectParticipant(encodedName) {
+      const name = decodeURIComponent(encodedName);
+      const found = participants.find(p => p.name === name);
+      if (!found) return;
+      currentParticipant = found;
+      applyParticipant(found);
+      renderParticipantList([found]);
+    }
+
+    function applyParticipant(p) {
+      document.getElementById('mainName').textContent = p.name;
+      document.getElementById('mainClub').textContent = p.club;
+      document.getElementById('gunPos').textContent = p.gunPos;
+      document.getElementById('genderPos').textContent = p.genderPos;
+      document.getElementById('pos').textContent = p.pos;
+      document.getElementById('chipMetric').textContent = p.chipTime;
+      document.getElementById('officialMetric').textContent = p.officialTime;
+      document.getElementById('statusMetric').textContent = p.status;
+      document.getElementById('raceField').textContent = p.race;
+      document.getElementById('bibField').textContent = p.bib;
+      document.getElementById('catField').textContent = p.category;
+      document.getElementById('diplomaName').textContent = p.name;
+      document.getElementById('diplomaOfficial').textContent = p.officialTime;
+      document.getElementById('diplomaChip').textContent = p.chipTime;
+      document.getElementById('diplomaBib').textContent = p.bib;
+      document.getElementById('diplomaClub').textContent = p.club;
+      document.getElementById('highlightTime').textContent = p.chipTime;
+    }
+
+    function searchParticipant() {
+      const q = document.getElementById('searchInput').value.trim().toUpperCase();
+      const filtered = participants.filter(p =>
+        p.name.toUpperCase().includes(q) || p.bib.toUpperCase().includes(q)
+      );
+      renderParticipantList(filtered);
+      if (filtered.length) {
+        currentParticipant = filtered[0];
+        applyParticipant(filtered[0]);
+      }
+    }
+
+    function scrollToDiploma() {
+      document.getElementById('diploma').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function copyName() {
+      navigator.clipboard.writeText(currentParticipant.name).then(() => {
+        alert('Nombre copiado');
+      });
+    }
+
+    renderParticipantList(participants);
+    applyParticipant(currentParticipant);
+  </script>
+</body>
+</html>
