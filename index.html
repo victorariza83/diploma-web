@@ -1,72 +1,238 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diploma - Maratón Málaga</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
 
-<div class="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-6">
 
-  <!-- Buscador -->
-  <div class="bg-white p-6 rounded-2xl shadow">
-    <h2 class="text-lg font-bold mb-2">Buscar participante</h2>
-    <input id="search" type="text" value="VICTOR MANUEL ARIZA MAYO" class="w-full border p-3 rounded-xl" />
-    <button onclick="filtrar()" class="mt-4 w-full bg-black text-white p-3 rounded-xl">Buscar</button>
-  </div>
 
-  <!-- Resumen -->
-  <div class="bg-white p-6 rounded-2xl shadow">
-    <h2 class="text-lg font-bold">Resumen</h2>
-    <p><strong>Nombre:</strong> <span id="name">VICTOR MANUEL ARIZA MAYO</span></p>
-    <p><strong>Dorsal:</strong> 6928ZY8D</p>
-    <p><strong>Tiempo oficial:</strong> <span id="official">2:58:33</span></p>
-    <p><strong>Tiempo real:</strong> <span id="chip">2:57:39</span></p>
-    <button onclick="imprimir()" class="mt-4 w-full bg-green-600 text-white p-3 rounded-xl">Imprimir diploma</button>
-  </div>
 
-</div>
+Listo. Ya tienes una versión 100% HTML estático en el canvas 👆
 
-<!-- Diploma -->
-<div id="diploma" class="max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow mt-6">
-  <h1 class="text-3xl font-bold text-center">Generali Maratón Málaga 2025</h1>
-  <p class="text-center mt-2">Diploma oficial</p>
+Cómo usarla en GitHub Pages (rápido)
+Descarga ese archivo como index.html
 
-  <div class="text-center mt-8">
-    <p>Se certifica que</p>
-    <h2 class="text-2xl font-bold" id="diplomaName">VICTOR MANUEL ARIZA MAYO</h2>
-    <p class="mt-2">ha finalizado la prueba Medio Maratón</p>
-  </div>
+Crea un repositorio en GitHub
 
-  <div class="grid grid-cols-2 gap-6 mt-8 text-center">
-    <div>
-      <p class="text-sm">Tiempo oficial</p>
-      <p class="text-2xl font-bold" id="diplomaOfficial">2:58:33</p>
-    </div>
-    <div>
-      <p class="text-sm">Tiempo real</p>
-      <p class="text-2xl font-bold text-green-600" id="diplomaChip">2:57:39</p>
-    </div>
-  </div>
-</div>
+Sube el index.html
 
-<script>
-function filtrar() {
-  const input = document.getElementById('search').value.toUpperCase();
-  if (input.includes('VICTOR')) {
-    document.getElementById('name').innerText = 'VICTOR MANUEL ARIZA MAYO';
-    document.getElementById('diplomaName').innerText = 'VICTOR MANUEL ARIZA MAYO';
-  } else {
-    alert('Solo hay un participante en esta demo');
-  }
+Ve a Settings → Pages
+
+Activa desde rama main
+
+Entra a tu URL (https://tuusuario.github.io/repositorio)
+
+Qué incluye esta versión
+Buscador básico (filtra por el nombre)
+
+Datos ya cargados de VICTOR MANUEL ARIZA MAYO
+
+Diploma visual
+
+Botón de imprimir / guardar en PDF
+
+Sin React, sin build, funciona directamente
+
+Si quieres el siguiente nivel puedo:
+
+Hacer que cargue múltiples corredores desde JSON (como la web real)
+
+Clonar aún más el diseño de Sportmaniacs (tipografía, colores exactos)
+
+Añadir descarga directa en PDF con botón
+
+Solo dime 👍
+
+
+para crear un proyecto react como lo creo desde github?
+
+Buena pregunta, porque aquí hay un matiz importante:
+👉 GitHub NO crea proyectos React por sí solo. GitHub solo aloja el código.
+El proyecto React lo creas en tu ordenador y luego lo subes a GitHub.
+
+Te explico la forma correcta (la que usa todo el mundo ahora mismo 👇)
+
+🚀 OPCIÓN RECOMENDADA (Vite + React)
+1. Crear el proyecto en local
+Abre terminal y ejecuta:
+
+npm create vite@latest mi-diploma -- --template react
+Luego:
+
+cd mi-diploma
+npm install
+npm run dev
+👉 Esto te abre la web en:
+
+http://localhost:5173
+2. Subirlo a GitHub
+Primero crea un repo vacío en GitHub (sin README).
+
+Luego en tu proyecto:
+
+git init
+git add .
+git commit -m "Proyecto inicial React"
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/mi-diploma.git
+git push -u origin main
+🌐 3. Publicarlo (GitHub Pages)
+React no funciona directo → hay que hacer build:
+
+npm run build
+Esto crea una carpeta:
+
+/dist
+Opción fácil (recomendada)
+Instala gh-pages:
+
+npm install gh-pages --save-dev
+Edita package.json y añade:
+
+"homepage": "https://TU-USUARIO.github.io/mi-diploma",
+"scripts": {
+  "deploy": "gh-pages -d dist"
 }
+Luego:
 
-function imprimir() {
-  window.print();
-}
-</script>
+npm run deploy
+👉 Ya tendrás tu web online
 
-</body>
-</html>
+🧠 Alternativa (sin terminal)
+Si no quieres instalar nada:
+
+Ve a 👉 https://vite.new/react
+
+Descarga el proyecto
+
+Súbelo a GitHub
+
+⚠️ IMPORTANTE
+GitHub Pages sirve HTML estático
+
+React necesita build (dist)
+
+No subas solo src/ → no funcionará
+
+💡 CONSEJO PARA TU CASO
+Como ya tienes:
+
+versión React (canvas)
+
+versión HTML
+
+👉 Para algo rápido → usa HTML
+👉 Para algo escalable → usa React + Vite
+
+Si quieres, en el siguiente paso te puedo:
+
+convertir tu proyecto actual en un repo listo para copiar/pegar
+
+o darte el package.json ya preparado para deploy automático
+
+Solo dime 👍
+
+
+me puedes generar una web en html pero replicando exactamente el formato de la web original
+
+Voy a inspeccionar la página original para copiar la estructura visual lo más fielmente posible y, si hay partes que el sitio no deja ver desde aquí, las recrearé a partir de lo visible.
+
+Voy a rehacerla en HTML estático con una estructura mucho más fiel a la original de Sportmaniacs: cabecera, migas, pestañas, panel de búsqueda, bloque “Tu resultado”, resumen, botones y estilo visual oscuro/amarillo.
+
+Diploma Static Html
+· html
+    .summary-item {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .summary-item .k {
+      color: #7a7a7a;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .summary-item .v {
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px 22px 0;
+    }
+
+    .action-btn {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .action-btn.primary {
+      background: var(--yellow);
+      border-color: var(--yellow);
+    }
+
+    .diploma {
+      margin-top: 18px;
+      background: linear-gradient(135deg, #fffef9 0%, #f7f1d4 100%);
+      border: 8px solid #d3b23f;
+      border-radius: 18px;
+      padding: 34px;
+    }
+
+    .diploma-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+      padding-bottom: 20px;
+    }
+
+    .diploma-title {
+      margin: 0;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .diploma-sub {
+      color: #7b6b2b;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .diploma-race {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 14px;
+      padding: 14px 18px;
+      min-width: 180px;
+      text-align: right;
+      font-weight: 800;
+    }
+
+    .diploma-center {
+      text-align: center;
+      padding: 34px 0 22px;
+    }
+
+    .diploma-center .small {
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .diploma-name {
+
+
