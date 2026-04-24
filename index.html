@@ -592,7 +592,7 @@
       <section class="card sidebar-section">
         <h2 class="search-title">Herramientas</h2>
         <button class="btn btn-dark" style="width:100%; margin-bottom:10px;" onclick="window.print()">Imprimir</button>
-        <button class="btn btn-primary" style="width:100%; margin-bottom:10px;" onclick="scrollToDiploma()">Ver diploma</button>
+        <button class="btn btn-primary" style="width:100%; margin-bottom:10px;" onclick="downloadDiploma()">Ver diploma</button>
         <button class="btn" style="width:100%; background:#fff; border:1px solid var(--border);" onclick="copyLink()">Compartir</button>
       </section>
     </aside>
@@ -610,11 +610,11 @@
           <div class="metrics-grid">
             <div class="metric">
               <div class="metric-label">Official Results</div>
-              <div class="metric-value" id="gunPos">—</div>
+              <div class="metric-value" id="gunPos">415</div>
             </div>
             <div class="metric">
               <div class="metric-label">Gender Pos.</div>
-              <div class="metric-value" id="genderPos">—</div>
+              <div class="metric-value" id="genderPos">380</div>
             </div>
             <div class="metric">
               <div class="metric-label">Gun Time</div>
@@ -626,11 +626,11 @@
           <div class="metrics-grid">
             <div class="metric">
               <div class="metric-label">Chip position</div>
-              <div class="metric-value" id="pos">—</div>
+              <div class="metric-value" id="pos">413</div>
             </div>
             <div class="metric">
               <div class="metric-label">Gender Pos.</div>
-              <div class="metric-value" id="chipGenderPos">—</div>
+              <div class="metric-value" id="chipGenderPos">378</div>
             </div>
             <div class="metric">
               <div class="metric-label">Chip Time</div>
@@ -664,7 +664,7 @@
 
           <div class="actions">
             <button class="action-btn primary" onclick="window.print()">Imprimir</button>
-            <button class="action-btn" onclick="scrollToDiploma()">Tu resultado</button>
+            <button class="action-btn" onclick="downloadDiploma()">Tu resultado</button>
             <button class="action-btn" onclick="copyName()">Copiar nombre</button>
             <button class="action-btn" onclick="copyLink()">Compartir</button>
           </div>
@@ -803,8 +803,14 @@
       }
     }
 
-    function scrollToDiploma() {
-      document.getElementById('diploma').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    function downloadDiploma() {
+      const link = document.createElement('a');
+      link.href = 'diploma.png';
+      link.download = 'diploma.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
     }
 
     function copyName() {
